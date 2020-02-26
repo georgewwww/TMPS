@@ -1,16 +1,33 @@
-﻿using PizzaNetwork.Interfaces;
+﻿using PizzaNetwork.Andys;
+using PizzaNetwork.Corso;
+using PizzaNetwork.Interfaces;
 
 namespace PizzaNetwork
 {
-	public sealed class Franchise
+	public sealed class Franchise : IFranchise
 	{
-		public static Franchise Instance { get; } = new Franchise();
+		private Franchise() {}
+		private static Franchise _instance;
 
-		public IPizzaNetwork PizzaNetwork { get; set; }
-
-		public Franchise()
+		public static Franchise GetInstance()
 		{
-			PizzaNetwork = new PizzaNetwork();
+			if (_instance == null)
+			{
+				_instance = new Franchise();
+			}
+
+			return _instance;
 		}
+
+		public IPizzaStore GetAndysPizzaStore()
+		{
+			return new AndysPizzaStore();
+		}
+
+		public IPizzaStore GetCorsoPizzaStore()
+		{
+			return new CorsoPizzaStore();
+		}
+
 	}
 }

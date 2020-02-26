@@ -1,6 +1,6 @@
 ﻿namespace PizzaNetwork.Interfaces
 {
-	public interface IPizzaNetwork
+	public interface IFranchise
 	{
 		IPizzaStore GetAndysPizzaStore();
 		IPizzaStore GetCorsoPizzaStore();
