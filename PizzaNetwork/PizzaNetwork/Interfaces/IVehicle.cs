@@ -1,7 +1,7 @@
 ﻿namespace PizzaNetwork.Interfaces
 {
-	public interface ITransport
+	public interface IVehicle
 	{
-		void Request();
+		void Send();
 	}
 }

@@ -39,15 +39,15 @@ namespace PizzaNetwork.Andys
 
 			if (quantity > 4)
 			{
-				var transport = new CarTransport("White Car");
-				var transportSystem = new TransportSystem(transport);
-				transportSystem.Execute();
+				var transport = new CarTransport();
+				var transportSystem = new StrausTransportSystem(transport);
+				transportSystem.Request();
 			}
 			else
 			{
-				var transport = new BikeTransport("Blumarine Bike");
-				var transportSystem = new TransportSystem(transport);
-				transportSystem.Execute();
+				var transport = new BikeTransport();
+				var transportSystem = new StrausTransportSystem(transport);
+				transportSystem.Request();
 			}
 		}
 	}

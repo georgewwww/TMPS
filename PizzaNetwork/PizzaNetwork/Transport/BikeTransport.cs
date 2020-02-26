@@ -3,18 +3,11 @@ using PizzaNetwork.Interfaces;
 
 namespace PizzaNetwork.Transport
 {
-	public class BikeTransport : ITransport
+	public class BikeTransport : IVehicle
 	{
-		public string Name { get; set; }
-
-		public BikeTransport(string name)
-		{
-			this.Name = name;
-		}
-
 		public void Send()
 		{
-			Console.WriteLine($"Sending the package with {Name}.");
+			Console.WriteLine("Sending the package with bike.");
 		}
 	}
 }

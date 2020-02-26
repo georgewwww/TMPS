@@ -39,15 +39,15 @@ namespace PizzaNetwork.Corso
 
 			if (quantity > 4)
 			{
-				var transport = new CarTransport("Pink Car");
-				var transportSystem = new TransportSystem(transport);
-				transportSystem.Execute();
+				var transport = new CarTransport();
+				var transportSystem = new StrausTransportSystem(transport);
+				transportSystem.Request();
 			}
 			else
 			{
-				var transport = new BikeTransport("Black Bike");
-				var transportSystem = new TransportSystem(transport);
-				transportSystem.Execute();
+				var transport = new BikeTransport();
+				var transportSystem = new StrausTransportSystem(transport);
+				transportSystem.Request();
 			}
 		}
 	}
