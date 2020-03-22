@@ -1,5 +1,6 @@
 ﻿using System;
 using PizzaNetwork.Enums;
+using PizzaNetwork.Food;
 using PizzaNetwork.Interfaces;
 
 namespace PizzaNetwork
@@ -16,10 +17,12 @@ namespace PizzaNetwork
 			switch (storeId)
 			{
 				case 1:
+					Console.Clear();
 					pizzaStore = franchise.GetAndysPizzaStore();
 					Menu(pizzaStore);
 					break;
 				case 2:
+					Console.Clear();
 					pizzaStore = franchise.GetCorsoPizzaStore();
 					Menu(pizzaStore);
 					break;
@@ -30,18 +33,32 @@ namespace PizzaNetwork
 
 		internal static void Menu(IPizzaStore pizzaStore)
 		{
+			var foodCollection = new FoodCollection();
+			var count = 0;
+
 			Console.WriteLine("[1] Pizza");
 			Console.WriteLine("[2] Salad");
 			Console.WriteLine("[3] Soup");
 			Console.WriteLine("[4] Snacks");
 			Console.WriteLine("[5] Alcohol\n");
-			var itemId = Convert.ToInt32(Console.ReadLine());
-			Console.Write("Quantity: ");
-			var quantity = Convert.ToInt32(Console.ReadLine());
+			Console.WriteLine("[0] Continue...\n");
 
-			if (itemId >= 1 && itemId <= 5)
+			while (true)
 			{
-				pizzaStore.Order((FoodType)itemId, quantity);
+				var itemId = Convert.ToInt32(Console.ReadLine());
+				if (itemId == 0)
+				{
+					pizzaStore.Order(foodCollection);
+					return;
+				}
+
+				Console.Write("Quantity: ");
+				var quantity = Convert.ToInt32(Console.ReadLine());
+
+				if (itemId >= 1 && itemId <= 5)
+				{
+					foodCollection[count++] = new FoodObject((FoodType)itemId, quantity);
+				}
 			}
 		}
 

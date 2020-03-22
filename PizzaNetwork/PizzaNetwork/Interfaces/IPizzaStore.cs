@@ -4,6 +4,6 @@ namespace PizzaNetwork.Interfaces
 {
 	public interface IPizzaStore
 	{
-		void Order(FoodType food, int quantity);
+		void Order(IFoodCollection foodCollection);
 	}
 }
