@@ -2,6 +2,7 @@
 using PizzaNetwork.Enums;
 using PizzaNetwork.Food;
 using PizzaNetwork.Interfaces;
+using PizzaNetwork.Observer;
 
 namespace PizzaNetwork
 {
@@ -62,8 +63,28 @@ namespace PizzaNetwork
 			}
 		}
 
+		internal static void DiscountInit()
+		{
+			var discountNotification = new DiscountNotification();
+			var customer1 = new Customer(discountNotification, "John Doe");
+			var customer2 = new Customer(discountNotification, "Michael Philips");
+
+			discountNotification.Attach(customer1);
+			discountNotification.Attach(customer2);
+
+			var rand = new Random().Next(100);
+			if (rand > 70)
+			{
+				Console.WriteLine("Today it's discount day!\nSending notification  to all the customers...\n");
+				discountNotification.DiscountState = 20;
+				discountNotification.Notify();
+			}
+			Console.ReadLine();
+		}
+
 		static void Main(string[] args)
 		{
+			DiscountInit();
 			var franchise = Franchise.GetInstance(); 
 			StoreMenu(franchise);
 		}
